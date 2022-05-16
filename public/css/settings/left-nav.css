@@ -1,0 +1,91 @@
+.header-main {
+	left: 0 !important;
+}
+
+.pt-home .banner {
+	left: 10% !important;
+}
+
+.pt-home .lang {
+	left: 11% !important;	
+}
+
+.pt-home .social {
+	right: 20px !important;	
+}
+
+.pt-about, 
+.pt-resume, 
+.pt-portfolio, 
+.pt-blog,
+.pt-contact {
+	-webkit-transform: translateX(200%) !important;
+	-ms-transform: translateX(200%) !important;
+	transform: translateX(200%) !important;
+}
+
+#perfil:target .pt-about,
+#miembros:target .pt-blog,
+#about:target .pt-about,
+#resume:target .pt-resume,
+#vehiculos:target .pt-resume,
+#portfolio:target .pt-portfolio,
+#inventario:target .pt-portfolio,
+#reservas:target .pt-portfolio,
+#blog:target .pt-blog,
+#contact:target .pt-contact {
+	-webkit-transform: translateX(11.1%) !important;
+	-ms-transform: translateX(11.1%) !important;
+	transform: translateX(11.1%) !important;
+}
+
+.blog-page .blog-container,
+.blog-list .blog-list-container {
+    left: 10% !important;
+}
+
+.blog-page .blog-nav {
+	left: 55% !important;
+}
+
+.header-mobile .header-toggle {
+	float: right;
+}
+
+@media screen and (max-width: 768px) {
+	.header-main {
+		left: -135px !important;
+	}
+	.header-main.on {
+        left: 0px !important;
+    }
+	#perfil:target .pt-about,
+	#miembros:target .pt-blog,
+	#about:target .pt-about,
+	#resume:target .pt-resume,
+	#vehiculos:target .pt-resume,
+	#portfolio:target .pt-portfolio,
+	#inventario:target .pt-portfolio,
+	#reservas:target .pt-portfolio,
+	#blog:target .pt-blog,
+	#contact:target .pt-contact {
+		-webkit-transform: translateX(0%) !important;
+		-ms-transform: translateX(0%) !important;
+		transform: translateX(0%) !important;
+	}
+	.blog-page .blog-container {
+		left: 0 !important;
+	}
+}
+
+@media screen and (max-width: 575px) {
+	.pt-home .banner {
+		left: 0 !important;
+	}
+	.pt-home .lang {
+		left: 10px !important;	
+	}
+	.pt-home .social {
+		right: 10px !important;	
+	}
+}
