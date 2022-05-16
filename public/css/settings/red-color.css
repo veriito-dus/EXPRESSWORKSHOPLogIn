@@ -55,7 +55,8 @@ a:focus,
 
 .pt-about .info-icon i,
 .pt-about .service:hover i:after,
-.pt-about .price:hover i:after {
+.pt-about .price:hover i:after,
+.pt-resume .price:hover i:after {
 	border: 1px solid #d94c48 !important;
 }
 

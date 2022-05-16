@@ -25,10 +25,12 @@
 }
 
 #perfil:target .pt-about,
+#reservasMecanico:target .pt-about,
 #miembros:target .pt-blog,
 #about:target .pt-about,
 #resume:target .pt-resume,
 #vehiculos:target .pt-resume,
+#pendienteMecanico:target .pt-resume,
 #portfolio:target .pt-portfolio,
 #inventario:target .pt-portfolio,
 #reservas:target .pt-portfolio,
@@ -60,10 +62,12 @@
         left: 0px !important;
     }
 	#perfil:target .pt-about,
+	#reservasMecanico:target .pt-about,
 	#miembros:target .pt-blog,
 	#about:target .pt-about,
 	#resume:target .pt-resume,
 	#vehiculos:target .pt-resume,
+	#pendienteMecanico:target .pt-resume,
 	#portfolio:target .pt-portfolio,
 	#inventario:target .pt-portfolio,
 	#reservas:target .pt-portfolio,

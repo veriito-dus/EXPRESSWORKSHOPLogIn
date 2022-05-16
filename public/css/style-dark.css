@@ -693,10 +693,12 @@ blockquote span img {
 }
 
 #perfil:target .pt-home,
+#reservasMecanico:target .pt-home,
 #miembros:target .pt-home,
 #about:target .pt-home,
 #resume:target .pt-home,
 #vehiculos:target .pt-home,
+#pendienteMecanico:target .pt-home,
 #inventario:target .pt-home,
 /* #reservas:target .pt-home, */
 #portfolio:target .pt-home,
@@ -719,10 +721,12 @@ blockquote span img {
 }
 
 #perfil:target .pt-about,
+#reservasMecanico:target .pt-about,
 #miembros:target .pt-blog,
 #about:target .pt-about,
 #resume:target .pt-resume,
 #vehiculos:target .pt-resume,
+#pendienteMecanico:target .pt-resume,
 #inventario:target .pt-portfolio,
 #reservas:target .pt-portfolio,
 #portfolio:target .pt-portfolio,
@@ -1382,12 +1386,14 @@ padding-bottom: 15px;
 }
 
 /* Price */
-.pt-about .price {
+.pt-about .price,
+.pt-resume .price {
 	text-align: center;
 	margin-bottom: 80px;
 }
 
-.pt-about .price .head-price:after {
+.pt-about .price .head-price:after,
+.pt-resume .price .head-price:after {
 	content: '';
 	position: absolute;
 	width: 100%;
@@ -1396,7 +1402,8 @@ padding-bottom: 15px;
 	background: #0e0f10;
 }
 
-.pt-about .price .head-price i {
+.pt-about .price .head-price i,
+.pt-resume .price .head-price i {
 	position: absolute;
 	width: 70px;
 	height: 70px;
@@ -1413,7 +1420,8 @@ padding-bottom: 15px;
 	transform: translateX(-50%);
 }
 
-.pt-about .price:hover i:after {
+.pt-about .price:hover i:after,
+.pt-resume .price:hover i:after {
 	content: '';
 	position: absolute;
 	width: 60px;
@@ -1427,13 +1435,15 @@ padding-bottom: 15px;
 	animation: zoomIn .3s ease;
 }
 
-.pt-about .price .head-price h4 {
+.pt-about .price .head-price h4,
+.pt-resume .price .head-price h4 {
 	font-size: 20px;
 	padding-top: 25px;
 	padding-bottom: 25px;
 }
 
-.pt-about .price .body-price .price-plan .number {
+.pt-about .price .body-price .price-plan .number,
+.pt-resume .price .body-price .price-plan .number {
 	font-size: 22px;
 	font-weight: 500;
 }
