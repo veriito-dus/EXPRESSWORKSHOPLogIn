@@ -41,6 +41,12 @@ a:focus,
 .pt-resume .experience .item:before,
 .pt-resume .experience .item:after,
 .pt-resume .experience .item:hover h4:before,
+.pt-contact .experience .item:before,
+.pt-contact .experience .item:after,
+.pt-contact .experience .item:hover h4:before,
+.pt-portfolio .experience .item:before,
+.pt-portfolio .experience .item:after,
+.pt-portfolio .experience .item:hover h4:before,
 .pt-resume .skill-item .progress .progress-bar,
 .pt-resume .work-process .dots,
 .pt-portfolio .portfolio-filter ul li.active,
@@ -68,7 +74,9 @@ a:focus,
 .page .header-page span:after,
 .editarPerfilCliente .header-page span:before,
 .editarPerfilCliente .header-page span:after,
-.pt-resume .experience .main h4:before {
+.pt-resume .experience .main h4:before,
+.pt-portfolio .experience .main h4:before,
+.pt-contact .experience .main h4:before {
     border: 2px solid #d94c48 !important;
 }
 

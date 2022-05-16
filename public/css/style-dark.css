@@ -1481,14 +1481,18 @@ padding-bottom: 15px;
 		6. Resume Section
 --------------------------------- */
 /* Experience */
-.pt-resume .experience .item {
+.pt-resume .experience .item,
+.pt-portfolio .experience .item,
+.pt-contact .experience .item {
 	position: relative;
 	padding-top: 15px;
 	padding-left: 40px;
 	margin-bottom: 40px;
 }
 
-.pt-resume .experience .item:before {
+.pt-resume .experience .item:before,
+.pt-portfolio .experience .item:before,
+.pt-contact .experience .item:before {
 	content: '';
 	position: absolute;
 	width: 1px;
@@ -1498,7 +1502,9 @@ padding-bottom: 15px;
 	background-color: #fff;
 }
 
-.pt-resume .experience .item:after {
+.pt-resume .experience .item:after,
+.pt-portfolio .experience .item:after,
+.pt-contact .experience .item:after {
 	content: '';
 	position: absolute;
 	width: 20px;
@@ -1508,23 +1514,31 @@ padding-bottom: 15px;
 	background-color: #fff;
 }
 
-.pt-resume .experience .main p {
+.pt-resume .experience .main p,
+.pt-portfolio .experience .main p,
+.pt-contact .experience .main p {
 	color: #fff;
 	font-size: 12px;
 }
 
-.pt-resume .experience .main p i {
+.pt-resume .experience .main p i,
+.pt-portfolio .experience .main p i,
+.pt-contact .experience .main p i {
     font-size: 13px;
     margin-right: 5px;
 }
 
-.pt-resume .experience .main h4 {
+.pt-resume .experience .main h4,
+.pt-portfolio .experience .main h4,
+.pt-contact .experience .main h4 {
 	position: relative;
 	line-height: 15px;
 	margin-bottom: 15px;
 }
 
-.pt-resume .experience .main h4:before {
+.pt-resume .experience .main h4:before,
+.pt-portfolio .experience .main h4:before,
+.pt-contact .experience .main h4:before {
 	content: '';
 	position: absolute;
 	width: 13px;

@@ -42,199 +42,198 @@
     <div id="reservasMecanico">
       <div id="pendienteMecanico">
 
-          <div class="header-mobile">
-            <a class="header-toggle"><i class="fas fa-bars"></i></a>
-            <h2>EXPRESSWORKSHOP</h2>
+        <div class="header-mobile">
+          <a class="header-toggle"><i class="fas fa-bars"></i></a>
+          <h2>EXPRESSWORKSHOP</h2>
+        </div>
+
+        <nav class="header-main" data-simplebar>
+
+          <div class="logo">
+            <a href="/mecanico"><img src="img/logo.png" alt=""></a>
           </div>
 
-          <nav class="header-main" data-simplebar>
+          <ul>
+            <li data-tooltip="Reservas" data-position="top">
+              <a href="#reservasMecanico" class="icon-a fas fa-book-open"></a>
+            </li>
+            <li data-tooltip="Mis Pendientes" data-position="top">
+              <a href="#pendienteMecanico" class="icon-r fas fa-list"></a>
+            </li>
+          </ul>
 
-            <div class="logo">
-              <a href="/mecanico"><img src="img/logo.png" alt=""></a>
+          <a class="music-bg" href="{{url('/logOut')}}">
+            <div class="lines" data-tooltip="Salir">
+              <i style="font-size:30px" class="icon-r fas fa-user"></i>
+            </div>
+            @if (auth()->check())
+            <p><b>{{auth()->user()->name}}</b></p>
+            @endif
+          </a>
+
+        </nav>
+
+        <div class="pt-home" style="background-image: url('img/home-bg.png')">
+          <section>
+
+            <div class="banner">
+              <h1>Bienvenido a</h1>
+              <h1>EXPRESSWORKSHOP</h1>
             </div>
 
-            <ul>
-              <li data-tooltip="Reservas" data-position="top">
-                <a href="#reservasMecanico" class="icon-a fas fa-book-open"></a>
-              </li>
-              <li data-tooltip="Mis Pendientes" data-position="top">
-                <a href="#pendienteMecanico" class="icon-r fas fa-list"></a>
-              </li>
+          </section>
+        </div>
 
-            </ul>
+        <!-- perfil Section -->
+        <div class="page pt-about" data-simplebar>
+          <section class="container">
 
-            <a class="music-bg" href="{{url('/logOut')}}">
-              <div class="lines" data-tooltip="Salir">
-                <i style="font-size:30px" class="icon-r fas fa-user"></i>
-              </div>
-              @if (auth()->check())
-              <p><b>{{auth()->user()->name}}</b></p>
-              @endif
-            </a>
-          </nav>
+            <div class="header-page mt-70 mob-mt">
+              <h2>Reservas</h2>
+              <span></span>
+            </div>
 
-          <div class="pt-home" style="background-image: url('img/home-bg.png')">
-            <section>
-
-              <div class="banner">
-                <h1>Bienvenido a</h1>
-                <h1>EXPRESSWORKSHOP</h1>
-              </div>
-
-            </section>
-          </div>
-
-          <!-- perfil Section -->
-          <div class="page pt-about" data-simplebar>
-            <section class="container">
-
-              <div class="header-page mt-70 mob-mt">
-                <h2>Reservas</h2>
-                <span></span>
-              </div>
-
-  									<div class="col-lg-12 col-sm-12 mt-95">
-											<div class="price box">
-												<div class="head-price">
-                          <i class="fa fa-wrench"></i>
-													<h4>Pendientes</h4>
-												</div>
-												<div class="body-price">
-                          <div class="tabla-reserva mt-20" style="">
-                            <table  style="margin:auto; width:100%;">
-                              <thead class="">
-                                <tr>
-                                  <th>#</th>
-                                  <th>Fecha</th>
-                                  <th>Placa</th>
-                                  <th>Tipo de mantenimiento</th>
-                                  <th>Estado</th>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <td>1</td>
-                                  <td>enero</td>
-                                  <td>3000</td>
-                                  <td>3000</td>
-                                  <td>
-                                    <form action="" method="post">
-                                      <input type="hidden" name="user_mecanico" value="">
-                                      <input type="hidden" name="user_reserva" value="">
-                                      <button type="submit" class="botonEstadoMecanico">Tomar</button>
-                                    </form>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>2</td>
-                                  <td>enero</td>
-                                  <td>3000</td>
-                                  <td>3000</td>
-                                  <td>
-                                    <form action="" method="post">
-                                      <input type="hidden" name="user_mecanico" value="">
-                                      <input type="hidden" name="user_reserva" value="">
-                                      <button type="submit" class="botonEstadoMecanico">Tomar</button>
-                                    </form>
-                                  </td>
-                                </tr>
-                                <tr>
-                                  <td>3</td>
-                                  <td>enero</td>
-                                  <td>3000</td>
-                                  <td>3000</td>
-                                  <td>
-                                    <form action="" method="post">
-                                      <input type="hidden" name="user_mecanico" value="">
-                                      <input type="hidden" name="user_reserva" value="">
-                                      <input type="hidden" name="observaciones" value="Pendiente">
-                                      <button type="submit" class="botonEstadoMecanico">Tomar</button>
-                                    </form>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-												</div>
-											</div>
-										</div>
-
-            </section>
-          </div>
-
-          <!-- mis vehiculos Section -->
-          <div class="page pt-resume" data-simplebar>
-            <section class="container">
-              <div class="header-page mt-70 mob-mt">
-                <h2>Mis Trabajos Pendientes</h2>
-                <span></span>
-              </div>
-              <div class="col-lg-12 col-sm-12 mt-95">
-                <div class="price box">
-                  <div class="head-price">
-                    {{-- <i class="fa fa-file"></i> --}}
-                    <i class="fa fa-highlighter"></i>
-                    <h4>Reservaciones</h4>
-                  </div>
-                  <div class="body-price">
-                    <div class="tabla-reserva mt-20" style="">
-                      <table  style="margin:auto; width:100%;">
-                        <thead class="">
-                          <tr>
-                            <th>#</th>
-                            <th>Fecha</th>
-                            <th>Placa</th>
-                            <th>Tipo de mantenimiento</th>
-                            <th>Estado</th>
-                            <th>Observaciones</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>1</td>
-                            <td>enero</td>
-                            <td>3000</td>
-                            <td>3000</td>
-                            <td>3000</td>
-                            <td>
-                              <textarea class="observacionesMecanico" name="note" id="note"
-																placeholder="Your Message"></textarea>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>enero</td>
-                            <td>3000</td>
-                            <td>3000</td>
-                            <td>3000</td>
-                            <td>
-                              <textarea class="observacionesMecanico" name="observaciones" id="observaciones"
-																placeholder="Your Message"></textarea>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>enero</td>
-                            <td>3000</td>
-                            <td>3000</td>
-                            <td>3000</td>
-                            <td>
-                              <textarea class="observacionesMecanico" name="note" id="note"
-																placeholder="Your Message"></textarea>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
+						<div class="col-lg-12 col-sm-12 mt-95">
+    					<div class="price box">
+    						<div class="head-price">
+                  <i class="fa fa-wrench"></i>
+                  <h4>Pendientes</h4>
+                </div>
+								<div class="body-price">
+                  <div class="tabla-reserva mt-20" style="">
+                    <table  style="margin:auto; width:100%;">
+                      <thead class="">
+                        <tr>
+                          <th>#</th>
+                          <th>Fecha</th>
+                          <th>Placa</th>
+                          <th>Tipo de mantenimiento</th>
+                          <th>Estado</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>enero</td>
+                          <td>3000</td>
+                          <td>3000</td>
+                          <td>
+                            <form action="" method="post">
+                              <input type="hidden" name="user_mecanico" value="">
+                              <input type="hidden" name="user_reserva" value="">
+                              <button type="submit" class="botonEstadoMecanico">Tomar</button>
+                            </form>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>enero</td>
+                          <td>3000</td>
+                          <td>3000</td>
+                          <td>
+                            <form action="" method="post">
+                              <input type="hidden" name="user_mecanico" value="">
+                              <input type="hidden" name="user_reserva" value="">
+                              <button type="submit" class="botonEstadoMecanico">Tomar</button>
+                            </form>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>enero</td>
+                          <td>3000</td>
+                          <td>3000</td>
+                          <td>
+                            <form action="" method="post">
+                              <input type="hidden" name="user_mecanico" value="">
+                              <input type="hidden" name="user_reserva" value="">
+                              <input type="hidden" name="observaciones" value="Pendiente">
+                              <button type="submit" class="botonEstadoMecanico">Tomar</button>
+                            </form>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
                   </div>
                 </div>
               </div>
+            </div>
 
             </section>
-          </div>
-
-
         </div>
+
+        <!-- mis vehiculos Section -->
+        <div class="page pt-resume" data-simplebar>
+          <section class="container">
+
+            <div class="header-page mt-70 mob-mt">
+              <h2>Mis Trabajos Pendientes</h2>
+              <span></span>
+            </div>
+            <div class="col-lg-12 col-sm-12 mt-95">
+              <div class="price box">
+                <div class="head-price">
+                  {{-- <i class="fa fa-file"></i> --}}
+                  <i class="fa fa-highlighter"></i>
+                  <h4>Reservaciones</h4>
+                </div>
+                <div class="body-price">
+                  <div class="tabla-reserva mt-20" style="">
+                    <table  style="margin:auto; width:100%;">
+                      <thead class="">
+                        <tr>
+                          <th>#</th>
+                          <th>Fecha</th>
+                          <th>Placa</th>
+                          <th>Tipo de mantenimiento</th>
+                          <th>Estado</th>
+                          <th>Observaciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td>1</td>
+                          <td>enero</td>
+                          <td>3000</td>
+                          <td>3000</td>
+                          <td>3000</td>
+                          <td>
+                            <textarea class="observacionesMecanico" name="note" id="note"
+                              placeholder="Your Message"></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>2</td>
+                          <td>enero</td>
+                          <td>3000</td>
+                          <td>3000</td>
+                          <td>3000</td>
+                          <td>
+                            <textarea class="observacionesMecanico" name="observaciones" id="observaciones"
+                              placeholder="Your Message"></textarea>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td>3</td>
+                          <td>enero</td>
+                          <td>3000</td>
+                          <td>3000</td>
+                          <td>3000</td>
+                          <td>
+                            <textarea class="observacionesMecanico" name="note" id="note"
+                              placeholder="Your Message"></textarea>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </section>
+        </div>
+
       </div>
     </div>
   </div>
@@ -260,17 +259,8 @@
 <style>
   .tabla-reserva{
   text-align:center;
-  /* border:1px solid #ffffff;; */
 	padding: 20px;
-	/* background-image: url("img/tablas.png"); */
-  /* background-repeat: no-repeat; */
-  /* background-size: cover; */
-  /* background-color: #0D0E0F; */
-  /* background-color: #17191B; */
 	border-radius:10px;
-	/* backdrop-filter: blur(10px);
-	-webkit-backdrop-filter: blur(10px); */
-	/* box-shadow: 5px 5px 8px rgb(111, 111, 111); */
 }
 .tabla-reserva th{
   color:#d94c48;

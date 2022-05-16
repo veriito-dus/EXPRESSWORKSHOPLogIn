@@ -28,7 +28,8 @@ Route::get('/logOut', 'SessionsController@destroy');
 Route::get('/register', 'RegisterController@create');
 Route::post('/register', 'RegisterController@store');
 
-Route::view('/admin', 'admin');
+Route::view('/administrador', 'admin.index');
+Route::view('/editarAdmin', 'admin.edit');
 Route::view('/cliente', 'client.index');
 Route::view('/editarCliente', 'client.edit');
 Route::view('/inventario', 'inventario');
