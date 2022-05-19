@@ -86,12 +86,14 @@
             <span></span>
           </div>
           <div class="contact-form col-lg-12 col-sm-12 mt-70">
-            <form method="post" class="box contact-valid">
+            
+            <form method="post" action="{{route('inventario.store')}}" class="box contact-valid">
+              @csrf
               <h4>Crear inventario</h4>
               <div class="row mt-40">
                 <div class="col-lg-4 col-sm-12">
                   <p class="text-center" style="color:#d94c48">Nombre Producto</p>
-                  <input type="text" name="marca" id="marca" class="form-control" placeholder="Ingrese el Nombre Producto">
+                  <input type="text" name="producto" id="producto" class="form-control" placeholder="Ingrese el Nombre Producto">
                 </div>
                 <div class="col-lg-4 col-sm-12">
                   <p class="text-center" style="color:#d94c48">Marca</p>
@@ -99,12 +101,13 @@
                 </div>
                 <div class="col-lg-4 col-sm-12">
                   <p class="text-center" style="color:#d94c48">Cantidad</p>
-                  <input type="number" name="marca" id="marca" class="form-control" placeholder="Ingrese la marcaCantidad">
+                  <input type="number" name="cantidad" id="cantidad" class="form-control" placeholder="Ingrese la Cantidad">
                 </div>
                 <div class="col-lg-4 col-sm-12">
                   <p class="text-center mt-30" style="color:#d94c48">Tiempo de uso *En Dias*</p>
-                  <input type="number" name="marca" id="marca" class="form-control" placeholder="Ingrese Tiempo de uso">
+                  <input type="number" name="tiempo_de_uso" id="tiempo_de_uso" class="form-control" placeholder="Ingrese Tiempo de uso">
                 </div>
+                <input type="hidden" name="user_id_inventario" id="user_id_inventario" value="{{auth()->user()->id}}">
                 <div class="col-lg-12 col-sm-12 text-center mt-30">
                   <button type="submit" class="btn-st">Agregar</button>
                   <div id="loader">
@@ -130,27 +133,15 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($inventarios as $inventario)
                       <tr>
-                        <td>1</td>
-                        <td>enero</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                        <td>3000</td>
+                        <td>{{$inventario->id}}</td>
+                        <td>{{$inventario->producto}}</td>
+                        <td>{{$inventario->marca}}</td>
+                        <td>{{$inventario->cantidad}}</td>
+                        <td>{{$inventario->tiempo_de_uso}} Dias</td>
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>enero</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                        <td>enero</td>
-                        <td>3000</td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>
@@ -205,4 +196,5 @@
 .tabla-reserva td{
   padding: 10px;
 }
+
 </style>

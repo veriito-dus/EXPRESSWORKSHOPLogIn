@@ -32,10 +32,10 @@ Route::view('/administrador', 'admin.index');
 Route::view('/editarAdmin', 'admin.edit');
 Route::view('/cliente', 'client.index');
 Route::view('/editarCliente', 'client.edit');
-Route::view('/inventario', 'inventario');
 Route::view('/mecanico', 'mecanico');
 Route::view('/recepcion', 'recepcion');
 Route::resource('/recepcion','ReceptionController');
+Route::resource('/inventario','InventarioController');
 // Route::get('/recepcion','ReceptionController@index');
 
 // Route::view('/prueba', 'client.index');

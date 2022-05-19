@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\mantenimiento;
+// use App\mantenimiento;
 use App\reception;
-use App\User;
-use App\vehiculo;
+// use App\User;
+// use App\vehiculo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
