@@ -86,38 +86,43 @@
             <span></span>
           </div>
           <div class="contact-form col-lg-12 col-sm-12 mt-70">
-            <form method="post" class="box contact-valid">
+            <form method="post" action="{{route('recepcion.store')}}" class="box contact-valid">
+              @csrf
               <h4>Crear reserva</h4>
               <div class="row mt-40">
                 <div class="col-lg-4 col-sm-12">
-                  <p class="text-center">Fecha a reservar</p>
-                  <input type="date" name="marca" id="marca" class="form-control" placeholder="Ingrese la marca">
-                </div>
-                <div class="col-lg-4 col-sm-12">
                   <p class="text-center">Cliente</p>
-                  <select name="" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
-                    <option>Sergio</option>
-                    <option>ZME 252</option>
-                    <option>ZME 252</option>                     
+                  <select name="id_cliente" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
+                    @foreach ($usuarios as $usuario)
+                      <option value="{{ $usuario->id }}">{{$usuario->name}} {{$usuario->apellido}}</option>
+                    @endforeach                    
                   </select>
                 </div>
                 <div class="col-lg-4 col-sm-12">
                   <p class="text-center">Placa</p>
-                  <select name="placa" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
-                    <option>ZME 252</option>
-                    <option>ZME 252</option>
-                    <option>ZME 252</option>                     
+                  <select name="id_vehiculo" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
+                    @foreach ($vehiculos as $vehiculo)
+                    <option value="{{ $vehiculo->id }}">{{$vehiculo->placa}}</option>
+                    @endforeach  
                   </select>
                 </div>
                 <div class="col-lg-4 col-sm-12">
+                  <p class="text-center">Fecha a reservar</p>
+                  <input type="date" name="fecha" id="fecha" class="form-control" placeholder="Ingrese la marca">
+                </div>
+                <div class="col-lg-4 col-sm-12">
                   <p class="text-center mt-20">Tipo de mantenimiento</p>
-                  <select name="mantiento_id" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
-                    <option>Lavado</option>
-                    <option>Cambio de aceite</option>
-                    <option>Lavado</option>
-                    <option>Lavado</option>
+                  <select name="id_mantenimiento" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
+                    @foreach ($mantenimientos as $mantenimiento)
+                      <option value="{{ $mantenimiento->id }}">{{$mantenimiento->tipo_de_mantenimiento}}</option>
+                    @endforeach
                   </select>
                 </div>
+                <input type="hidden" name="id_estado" id="id_estado" value="2">
+                @if (auth()->check())
+                <input type="hidden" name="id_recepcionista" id="id_recepcionista" value="{{auth()->user()->id}}">
+                {{-- <p><b>{{auth()->user()->name}}</b></p> --}}
+                @endif
                 <div class="col-lg-12 col-sm-12 text-center mt-30">
                   <button type="submit" class="btn-st">Agregar</button>
                   <div id="loader">
@@ -144,30 +149,16 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($reservaciones as $reservacion)
                       <tr>
-                        <td>1</td>
-                        <td>enero</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                        <td>3000</td>
+                        <td>{{$reservacion->id}}</td>
+                        <td>{{$reservacion->fecha}}</td>
+                        <td>{{$reservacion->placa}}</td>
+                        <td>{{$reservacion->name}} {{$reservacion->apellido}}</td>
+                        <td>{{$reservacion->tipo_de_mantenimiento}}</td>
+                        <td>{{$reservacion->estado}}</td>
                       </tr>
-                      <tr>
-                        <td>2</td>
-                        <td>enero</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                      </tr>
-                      <tr>
-                        <td>3</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                        <td>enero</td>
-                        <td>3000</td>
-                        <td>3000</td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

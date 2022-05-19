@@ -35,5 +35,7 @@ Route::view('/editarCliente', 'client.edit');
 Route::view('/inventario', 'inventario');
 Route::view('/mecanico', 'mecanico');
 Route::view('/recepcion', 'recepcion');
+Route::resource('/recepcion','ReceptionController');
+// Route::get('/recepcion','ReceptionController@index');
 
 // Route::view('/prueba', 'client.index');
