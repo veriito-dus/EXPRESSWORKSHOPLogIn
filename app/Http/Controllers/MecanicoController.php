@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\inventario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 
-class InventarioController extends Controller
+class MecanicoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,16 +15,14 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        $inventario = DB::table('inventarios')
-
-        ->select('*')
-
-
+        $reservacion = DB::table('receptions')
+        ->join('vehiculos', 'vehiculos.id', '=', 'receptions.id_vehiculo')
+        ->join('estado_reservas', 'estado_reservas.id', '=', 'receptions.id_estado')
+        ->join('mantenimientos', 'mantenimientos.id', '=', 'receptions.id_mantenimiento')
+        ->join('users', 'users.id', '=', 'receptions.id_cliente')
+        ->select('vehiculos.placa','receptions.fecha','receptions.id', 'mantenimientos.tipo_de_mantenimiento','users.name','users.apellido','estado_reservas.estado')
         ->get();
-
-        // return view('admin.inicioAdmin', compact('NuevosUser'));
-
-        return view('inventario/index',['inventarios'=>$inventario]);
+        return view('mecanico',['reservaciones'=>$reservacion]);
     }
 
     /**
@@ -46,15 +43,7 @@ class InventarioController extends Controller
      */
     public function store(Request $request)
     {
-        $inventario= new inventario();
-        $inventario->producto = $request->producto;
-        $inventario->marca = $request->marca;
-        $inventario->cantidad = $request->cantidad;
-        $inventario->tiempo_de_uso = $request->tiempo_de_uso;
-        $inventario->user_id_inventario = $request->user_id_inventario;
-
-        $inventario->save();
-        return redirect()->route('inventario.index');
+        //
     }
 
     /**
@@ -76,9 +65,7 @@ class InventarioController extends Controller
      */
     public function edit($id)
     {
-        $inventario = inventario::findOrFail($id);
-        return view('inventario/edit',['inventario'=>$inventario]);
-
+        //
     }
 
     /**
@@ -90,10 +77,7 @@ class InventarioController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $datosInventarios = $request->except(['_token','_method']);
-        inventario::where(['id'=>$id])->update($datosInventarios);
-        // return back();
-        return redirect()->route('inventario.index');
+        //
     }
 
     /**

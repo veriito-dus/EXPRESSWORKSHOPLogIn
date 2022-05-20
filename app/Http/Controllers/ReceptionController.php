@@ -113,7 +113,9 @@ class ReceptionController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $estadoReserva = $request->except(['_token','_method']);
+        reception::where(['id'=>$id])->update($estadoReserva);
+        return redirect()->route('recepcion.index');
     }
 
     /**

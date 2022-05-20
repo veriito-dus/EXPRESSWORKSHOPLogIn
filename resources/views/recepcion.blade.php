@@ -118,7 +118,7 @@
                     @endforeach
                   </select>
                 </div>
-                <input type="hidden" name="id_estado" id="id_estado" value="2">
+                <input type="hidden" name="id_estado" id="id_estado" value="4">
                 @if (auth()->check())
                 <input type="hidden" name="id_recepcionista" id="id_recepcionista" value="{{auth()->user()->id}}">
                 {{-- <p><b>{{auth()->user()->name}}</b></p> --}}
@@ -146,6 +146,7 @@
                         <th>Usuario</th>
                         <th>Tipo de mantenimiento</th>
                         <th>Estado</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -157,6 +158,14 @@
                         <td>{{$reservacion->name}} {{$reservacion->apellido}}</td>
                         <td>{{$reservacion->tipo_de_mantenimiento}}</td>
                         <td>{{$reservacion->estado}}</td>
+                        <td>
+                          <form action="{{route('recepcion.update',$reservacion->id)}}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="id_estado" value="5">
+                            <button type="submit" class="botonEstadoMecanico">Cancelar</button>
+                          </form>
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -185,6 +194,8 @@
   <script src="js/main.js"></script>
   <script src="js/main-demo.js"></script>
   <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
+  <script src="js/jquery-3.6.0.js"></script>
+
 
 </body>
 
@@ -212,5 +223,17 @@
 }
 .tabla-reserva td{
   padding: 10px;
+}
+.botonEstadoMecanico{
+  border: 2px solid#17191B;
+  background-color:#17191B;
+  padding:3px 25px;
+  border-radius:10px;
+  cursor:pointer;
+  color: white;
+  font-size: 15px;
+}
+.botonEstadoMecanico:hover{
+  color:#d94c48;
 }
 </style>

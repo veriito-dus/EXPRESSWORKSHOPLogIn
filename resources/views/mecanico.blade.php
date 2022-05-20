@@ -185,45 +185,27 @@
                           <th>#</th>
                           <th>Fecha</th>
                           <th>Placa</th>
+                          <th>Propietario</th>
                           <th>Tipo de mantenimiento</th>
                           <th>Estado</th>
                           <th>Observaciones</th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($reservaciones as $reservacion)
                         <tr>
-                          <td>1</td>
-                          <td>enero</td>
-                          <td>3000</td>
-                          <td>3000</td>
-                          <td>3000</td>
+                          <td>{{$reservacion->id}}</td>
+                          <td>{{$reservacion->fecha}}</td>
+                          <td>{{$reservacion->placa}}</td>
+                          <td>{{$reservacion->name}} {{$reservacion->apellido}}</td>
+                          <td>{{$reservacion->tipo_de_mantenimiento}}</td>
+                          <td>{{$reservacion->estado}}</td>
                           <td>
                             <textarea class="observacionesMecanico" name="note" id="note"
                               placeholder="Your Message"></textarea>
                           </td>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>enero</td>
-                          <td>3000</td>
-                          <td>3000</td>
-                          <td>3000</td>
-                          <td>
-                            <textarea class="observacionesMecanico" name="observaciones" id="observaciones"
-                              placeholder="Your Message"></textarea>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>enero</td>
-                          <td>3000</td>
-                          <td>3000</td>
-                          <td>3000</td>
-                          <td>
-                            <textarea class="observacionesMecanico" name="note" id="note"
-                              placeholder="Your Message"></textarea>
-                          </td>
-                        </tr>
+                        @endforeach
                       </tbody>
                     </table>
                   </div>

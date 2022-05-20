@@ -130,6 +130,9 @@
                         <th>Marca</th>
                         <th>Cantidad</th>
                         <th>Tiempo de uso</th>
+                        <th>Fecha inicio</th>
+                        <th>Fecha modificacion</th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -140,6 +143,11 @@
                         <td>{{$inventario->marca}}</td>
                         <td>{{$inventario->cantidad}}</td>
                         <td>{{$inventario->tiempo_de_uso}} Dias</td>
+                        <td>{{$inventario->created_at}}</td>
+                        <td>{{$inventario->updated_at}}</td>
+                        <td>
+                          <a href="{{route('inventario.edit',$inventario->id)}}" type="submit" class="botonEstadoMecanico">Modificar</a>
+                        </td>
                       </tr>
                       @endforeach
                     </tbody>
@@ -196,5 +204,16 @@
 .tabla-reserva td{
   padding: 10px;
 }
-
+.botonEstadoMecanico{
+  border: 2px solid#17191B;
+  background-color:#17191B;
+  padding:3px 25px;
+  border-radius:10px;
+  cursor:pointer;
+  color: white;
+  font-size: 15px;
+}
+.botonEstadoMecanico:hover{
+  color:#d94c48;
+}
 </style>
