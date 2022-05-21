@@ -36,6 +36,7 @@ Route::view('/recepcion', 'recepcion');
 Route::resource('/recepcion','ReceptionController');
 Route::resource('/inventario','InventarioController');
 Route::resource('/mecanico','MecanicoController');
+
 // Route::view('/mecanico', 'mecanico');
 // Route::get('/recepcion','ReceptionController@index');
 

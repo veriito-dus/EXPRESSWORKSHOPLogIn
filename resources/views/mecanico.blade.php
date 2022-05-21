@@ -97,7 +97,7 @@
     					<div class="price box">
     						<div class="head-price">
                   <i class="fa fa-wrench"></i>
-                  <h4>Pendientes</h4>
+                  <h4>Reservaciones</h4>
                 </div>
 								<div class="body-price">
                   <div class="tabla-reserva mt-20" style="">
@@ -107,51 +107,32 @@
                           <th>#</th>
                           <th>Fecha</th>
                           <th>Placa</th>
+                          <th>Propietario</th>
                           <th>Tipo de mantenimiento</th>
                           <th>Estado</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
+                        @foreach ($reservaciones as $reservacion)
                         <tr>
-                          <td>1</td>
-                          <td>enero</td>
-                          <td>3000</td>
-                          <td>3000</td>
+                          <td>{{$reservacion->id}}</td>
+                          <td>{{$reservacion->fecha}}</td>
+                          <td>{{$reservacion->placa}}</td>
+                          <td>{{$reservacion->name}} {{$reservacion->apellido}}</td>
+                          <td>{{$reservacion->tipo_de_mantenimiento}}</td>
+                          <td>{{$reservacion->estado}}</td>
                           <td>
-                            <form action="" method="post">
-                              <input type="hidden" name="user_mecanico" value="">
-                              <input type="hidden" name="user_reserva" value="">
+                            <form action="{{route('mecanico.update',$reservacion->id)}}" method="post">
+                              @csrf
+                              @method('PUT')
+                              <input type="hidden" name="id_estado" value="2">
                               <button type="submit" class="botonEstadoMecanico">Tomar</button>
                             </form>
                           </td>
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>enero</td>
-                          <td>3000</td>
-                          <td>3000</td>
-                          <td>
-                            <form action="" method="post">
-                              <input type="hidden" name="user_mecanico" value="">
-                              <input type="hidden" name="user_reserva" value="">
-                              <button type="submit" class="botonEstadoMecanico">Tomar</button>
-                            </form>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>enero</td>
-                          <td>3000</td>
-                          <td>3000</td>
-                          <td>
-                            <form action="" method="post">
-                              <input type="hidden" name="user_mecanico" value="">
-                              <input type="hidden" name="user_reserva" value="">
-                              <input type="hidden" name="observaciones" value="Pendiente">
-                              <button type="submit" class="botonEstadoMecanico">Tomar</button>
-                            </form>
-                          </td>
-                        </tr>
+                        @endforeach
+
                       </tbody>
                     </table>
                   </div>
@@ -175,7 +156,7 @@
                 <div class="head-price">
                   {{-- <i class="fa fa-file"></i> --}}
                   <i class="fa fa-highlighter"></i>
-                  <h4>Reservaciones</h4>
+                  <h4>Pendientes</h4>
                 </div>
                 <div class="body-price">
                   <div class="tabla-reserva mt-20" style="">
@@ -189,21 +170,35 @@
                           <th>Tipo de mantenimiento</th>
                           <th>Estado</th>
                           <th>Observaciones</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
-                        @foreach ($reservaciones as $reservacion)
+                        @foreach ($reservacionesPendientes as $reservacionP)
                         <tr>
-                          <td>{{$reservacion->id}}</td>
-                          <td>{{$reservacion->fecha}}</td>
-                          <td>{{$reservacion->placa}}</td>
-                          <td>{{$reservacion->name}} {{$reservacion->apellido}}</td>
-                          <td>{{$reservacion->tipo_de_mantenimiento}}</td>
-                          <td>{{$reservacion->estado}}</td>
+                          <td>{{$reservacionP->id}}</td>
+                          <td>{{$reservacionP->fecha}}</td>
+                          <td>{{$reservacionP->placa}}</td>
+                          <td>{{$reservacionP->name}} {{$reservacionP->apellido}}</td>
+                          <td>{{$reservacionP->tipo_de_mantenimiento}}</td>
+                          <td>{{$reservacionP->estado}}</td>
                           <td>
-                            <textarea class="observacionesMecanico" name="note" id="note"
-                              placeholder="Your Message"></textarea>
-                          </td>
+                            <form action="{{route('mecanico.store')}}" method="post">
+                              @csrf
+                              <input type="hidden" name="user_id_mecanico" id="user_id_mecanico" value="{{auth()->user()->id}}">
+                              <input type="hidden" name="reserva_id" id="reserva_id" value="{{$reservacionP->id}}">
+                              <textarea name="observaciones" id="observaciones" cols="30" rows="3" style="color:white;background-color:transparent;border:none"></textarea>
+                              <button type="submit" class="botonEstadoMecanico">Guardar</button>
+                            </form>
+                            </td>
+                            <td>
+                              <form action="{{route('mecanico.update',$reservacionP->id)}}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <input type="hidden" name="id_estado" value="3">
+                                <button type="submit" class="botonEstadoMecanico">Terminado</button>
+                              </form>
+                            </td>
                         </tr>
                         @endforeach
                       </tbody>
