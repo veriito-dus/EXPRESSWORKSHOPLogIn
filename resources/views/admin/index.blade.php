@@ -105,28 +105,28 @@
                     <h2>Mi Perfil</h2>
                     <span></span>
                   </div>
-
+    
                   <div class="row mt-100">
                     <div class="col-lg-12 col-sm-12">
                       <div class="info box">
+                        @foreach ($admin as $admin)
                         <div class="row">
-
                           <div class="col-lg-3 col-sm-4">
                             <div class="photo">
                               <img alt="" src="img/user-photo.jpg">
                             </div>
                           </div>
-
+    
                           <div class="col-lg-3 col-sm-4">
                             <div class="info-icon">
                               <div class="desc-icon">
-                                <h4 style="padding-bottom: 10px;">Sergio Prieto</h4>
+                                <h4 style="padding-bottom: 10px;">{{$admin->name}}  {{$admin->apellido}}</h4>
                                 <div style="display:flex">
                                   <div class="locAdmin">
                                     Telefono:
                                   </div>
                                   <div class="locAdmin-texto">
-                                    3174469814
+                                    {{$admin->telefono}}
                                   </div>
                                 </div>
                                 <div style="display:flex">
@@ -134,13 +134,13 @@
                                     Direccion:
                                   </div>
                                   <div class="locAdmin-texto">
-                                    3174469814
+                                    {{$admin->direccion}}
                                   </div>
                                 </div>
                               </div>
                             </div>
                           </div>
-
+    
                           <div class="col-lg-3 col-sm-4">
                             <div class="info-icon">
                               <div class="desc-icon">
@@ -149,15 +149,15 @@
                                     Usuario:
                                   </div>
                                   <div class="locAdmin-texto">
-                                    3174469814
+                                    {{$admin->email}}
                                   </div>
                                 </div>
-                                <a href="/editarAdmin" class="btn-st" style="margin-top:20px">Modificar</a>
+                              <a href="{{route('administrador.edit',$admin->id)}}" type="submit" class="btn-st">Modificar</a>
                               </div>
                             </div>
                           </div>
-
                         </div>
+                      @endforeach
                       </div>
                     </div>
                   </div>
@@ -187,39 +187,24 @@
                                     <th>#</th>
                                     <th>Usuario</th>
                                     <th>Placa</th>
-                                    <th>Mecanico</th>
-                                    <th>Tipo de mantenimiento</th>
-                                    <th>Observaciones</th>
-                                    <th>Fecha</th>
+                                    <th>Modelo</th>
+                                    <th>Estado</th>
+                                    {{-- <th>Mecanico</th> --}}
+                                    {{-- <th>Tipo de mantenimiento</th> --}}
+                                    {{-- <th>Observaciones</th> --}}
+                                    {{-- <th>Fecha</th> --}}
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  @foreach ($vehiculos as $vehiculo)
                                   <tr>
-                                    <td>1</td>
-                                    <td>enero</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
+                                    <td>{{$vehiculo->id}}</td>
+                                    <td>{{$vehiculo->name}}</td>
+                                    <td>{{$vehiculo->placa}}</td>
+                                    <td>{{$vehiculo->modelo}}</td>
+                                    <td>{{$vehiculo->estado}}</td>
                                   </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>enero</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                  </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>enero</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                  </tr>
+                                  @endforeach
                                 </tbody>
                               </table>
                             </div>
@@ -253,34 +238,28 @@
                                 <thead class="">
                                   <tr>
                                     <th>#</th>
-                                    <th>Nombre Producto</th>
+                                    <th>Producto</th>
                                     <th>Marca</th>
                                     <th>Cantidad</th>
                                     <th>Tiempo de uso</th>
+                                    <th>Trabajador</th>
+                                    <th>Fecha Inicio</th>
+                                    <th>Fecha Modificacion</th>
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  @foreach ($inventario as $inventarios)
                                   <tr>
-                                    <td>1</td>
-                                    <td>enero</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
+                                    <td>{{$inventarios->id}}</td>
+                                    <td>{{$inventarios->producto}}</td>
+                                    <td>{{$inventarios->marca}}</td>
+                                    <td>{{$inventarios->cantidad}}</td>
+                                    <td>{{$inventarios->tiempo_de_uso}} Dias</td>
+                                    <td>{{$inventarios->name}}</td>
+                                    <td>{{$inventarios->created_at}}</td>
+                                    <td>{{$inventarios->updated_at}}</td>
                                   </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>enero</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                  </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>enero</td>
-                                    <td>3000</td>
-                                  </tr>
+                                  @endforeach
                                 </tbody>
                               </table>
                             </div>
@@ -304,57 +283,28 @@
                   </div>
 
                   <div class="row blog-masonry mt-100 mb-50">
+                    @foreach ($usuarios as $usuario)
                     <div class="col-lg-4 col-sm-4">
                       <div class="blog-item">
                         <div class="thumbnail">
                           <img alt="" src="img/blog/img-4.png">
                         </div>
-                        <h4>Pepito Perez</h4>
-                        <p style="text-align:center">Pepipe</p>
-                        <p style="text-align:center">3254001512</p>
-                        <p style="text-align:center">Cliente</p>
-                        <div class="blog-btn">
+                        <h4>{{$usuario->name}} {{$usuario->apellido}}</h4>
+                        <p style="text-align:center">{{$usuario->email}}</p>
+                        <p style="text-align:center">{{$usuario->telefono}}</p>
+                        <p style="text-align:center">{{$usuario->direccion}}</p>
+                        <p style="text-align:center">{{$usuario->rol}}</p>
+                        {{-- <div class="blog-btn">
                           <p style="color:#d94c48"><b>Placas vehiculos</b></p>
                           <ul>
                             <li>ZME 252</li>
                             <li>PGW 79E</li>
                           </ul>
-                        </div>
+                        </div> --}}
                       </div>
                     </div>
+                    @endforeach
 
-                    <div class="col-lg-4 col-sm-4">
-                      <div class="blog-item">
-                        <div class="thumbnail">
-                          <img alt="" src="img/blog/img-4.png">
-                        </div>
-                        <h4>Sergio Alejandro Prieto</h4>
-                        <p style="text-align:center">SergioPri</p>
-                        <p style="text-align:center">316954152</p>
-                        <p style="text-align:center">Cliente</p>
-                        <div class="blog-btn">
-                          <p style="color:#d94c48"><b>Placas vehiculos</b></p>
-                          <ul>
-                            <li>ZME 252 </li>
-                            <li>PGW 79E</li>
-                            <li>QWB 126</li>
-                            <li>EQK 22B</li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="col-lg-4 col-sm-4">
-                      <div class="blog-item">
-                        <div class="thumbnail">
-                          <img alt="" src="img/blog/img-4.png">
-                        </div>
-                        <h4>Veronica Dussan Parra</h4>
-                        <p style="text-align:center">VeriitoDuss</p>
-                        <p style="text-align:center">317454152</p>
-                        <p style="text-align:center">Trabajador</p>
-                      </div>
-                    </div>
                   </div>
                 </section>
               </div>
@@ -388,33 +338,17 @@
                                   </tr>
                                 </thead>
                                 <tbody>
+                                  @foreach ($reservaciones as $reservacion)
                                   <tr>
-                                    <td>1</td>
-                                    <td>enero</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
+                                    <td>{{$reservacion->id}}</td>
+                                    <td>{{$reservacion->fecha}}</td>
+                                    <td>{{$reservacion->placa}}</td>
+                                    <td>{{$reservacion->email}}</td>
+                                    <td>{{$reservacion->tipo_de_mantenimiento}}</td>
+                                    <td>{{$reservacion->apellido}}</td>
+                                    <td>{{$reservacion->estado}}</td>
                                   </tr>
-                                  <tr>
-                                    <td>2</td>
-                                    <td>enero</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                  </tr>
-                                  <tr>
-                                    <td>3</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                    <td>enero</td>
-                                    <td>enero</td>
-                                    <td>3000</td>
-                                    <td>3000</td>
-                                  </tr>
+                                @endforeach
                                 </tbody>
                               </table>
                             </div>

@@ -33,11 +33,12 @@ Route::view('/editarAdmin', 'admin.edit');
 Route::view('/cliente', 'client.index');
 Route::view('/editarCliente', 'client.edit');
 Route::view('/recepcion', 'recepcion');
+
 Route::resource('/recepcion','ReceptionController');
 Route::resource('/inventario','InventarioController');
 Route::resource('/mecanico','MecanicoController');
+Route::resource('/cliente','ClienteController');
+Route::resource('/administrador','AdministradorController');
+Route::post('/clientes', 'ClienteController@storeVehiculo');
+Route::put('/client/{id}', 'ClienteController@updateUsuer');
 
-// Route::view('/mecanico', 'mecanico');
-// Route::get('/recepcion','ReceptionController@index');
-
-// Route::view('/prueba', 'client.index');

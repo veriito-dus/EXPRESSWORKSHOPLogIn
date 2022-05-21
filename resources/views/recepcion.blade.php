@@ -147,6 +147,7 @@
                         <th>Tipo de mantenimiento</th>
                         <th>Estado</th>
                         <th></th>
+                        <th></th>
                       </tr>
                     </thead>
                     <tbody>
@@ -158,6 +159,14 @@
                         <td>{{$reservacion->name}} {{$reservacion->apellido}}</td>
                         <td>{{$reservacion->tipo_de_mantenimiento}}</td>
                         <td>{{$reservacion->estado}}</td>
+                        <td>
+                          <form action="{{route('recepcion.update',$reservacion->id)}}" method="post">
+                            @csrf
+                            @method('PUT')
+                            <input type="hidden" name="id_estado" value="4">
+                            <button type="submit" class="botonEstadoMecanico">aprobar</button>
+                          </form>
+                        </td>
                         <td>
                           <form action="{{route('recepcion.update',$reservacion->id)}}" method="post">
                             @csrf

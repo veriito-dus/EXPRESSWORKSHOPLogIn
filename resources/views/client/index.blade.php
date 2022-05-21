@@ -108,6 +108,7 @@
               <div class="row mt-100">
 							  <div class="col-lg-12 col-sm-12">
 							  	<div class="info box">
+                    @foreach ($usuarios as $usuario)
 							  		<div class="row">
 							  			<div class="col-lg-3 col-sm-4">
                         <div class="photo">
@@ -118,13 +119,13 @@
 							  			<div class="col-lg-3 col-sm-4">
 							  				<div class="info-icon">
                           <div class="desc-icon">
-                            <h4 style="padding-bottom: 10px;">Sergio Prieto</h4>
+                            <h4 style="padding-bottom: 10px;">{{$usuario->name}}  {{$usuario->apellido}}</h4>
                             <div style="display:flex">
                               <div class="locAdmin">
                                 Telefono:
                               </div>
                               <div class="locAdmin-texto">
-                                3174469814
+                                {{$usuario->telefono}}
                               </div>
                             </div>
                             <div style="display:flex">
@@ -132,7 +133,7 @@
                                 Direccion:
                               </div>
                               <div class="locAdmin-texto">
-                                3174469814
+                                {{$usuario->direccion}}
                               </div>
                             </div>
 							  					</div>
@@ -147,14 +148,15 @@
                                 Usuario:
                               </div>
                               <div class="locAdmin-texto">
-                                3174469814
+                                {{$usuario->email}}
                               </div>
                             </div>
-                            <a href="/editarCliente" class="btn-st" style="margin-top:20px">Modificar</a>
+                          <a href="{{route('cliente.edit',$usuario->id)}}" type="submit" class="btn-st">Modificar</a>
 							  					</div>
 							  				</div>
 							  			</div>
 							  		</div>
+                  @endforeach
 							  	</div>
 							  </div>
 							</div>
@@ -169,18 +171,21 @@
                 <span></span>
               </div>
               <div class="contact-form col-lg-12 col-sm-12 mt-70">
-                <form method="post" class="box contact-valid" id="">
+                <form method="post" class="box contact-valid" id="" action="{{url('clientes')}}">
+                  @csrf
                   <h4>Agregar vehiculo</h4>
                   <div class="row mt-20">
                     <div class="col-lg-4 col-sm-12">
                       <input type="text" name="marca" id="marca" class="form-control" placeholder="Ingrese la marca">
                     </div>
                     <div class="col-lg-4 col-sm-12">
-                      <input type="text" name="placa" id="placa" class="form-control" placeholder="Ingrese la placa">
-                    </div>
-                    <div class="col-lg-4 col-sm-12">
                       <input type="text" name="modelo" id="modelo" class="form-control" placeholder="Ingrese el modelo">
                     </div>
+                    <div class="col-lg-4 col-sm-12">
+                      <input type="text" name="placa" id="placa" class="form-control" placeholder="Ingrese la placa">
+                    </div>
+                    <input type="hidden" name="user_id" id="user_id" value="{{auth()->user()->id}}">
+                    <input type="hidden" name="estado" id="estado" value="en circulacion">
                     <div class="col-lg-12 col-sm-12 text-center mt-30">
                       <button type="submit" class="btn-st">Agregar</button>
                       <div id="loader">
@@ -191,70 +196,27 @@
                 </form>
               </div>
               <div class="row mt-60">
+                @foreach ($vehiculos as $vehiculo)
                 <div class="col-lg-3 col-sm-5">
                   <div class="experience box" style="margin-bottom:20px">
                     <div class="item">
-                      <form method="">
-                        <div class="main">
-                          <h4>ZME 252</h4>
-                          <ul>
-                            <li>Marca: BMW</li>
-                            <li>Modelo: </li>
-                          </ul>
-                        </div>
-                        <button type="submit" class="btn-st mt-20">Eliminar</button>
+                      <div class="main">
+                        <h4>{{$vehiculo->placa}}</h4>
+                        <ul>
+                          <li>Marca: {{$vehiculo->marca}}</li>
+                          <li>Modelo: {{$vehiculo->modelo}} </li>
+                        </ul>
+                      </div>
+                      <form action="{{route('cliente.update',$vehiculo->id)}}" method="post">
+                        @csrf
+                        @method('PUT')
+                        <input type="hidden" name="estado" id="estado" value="no en circulacion">
+                        <button type="submit" class="btn-st mt-20">Cancelar</button>
                       </form>
                     </div>
                   </div>
                 </div>
-                <div class="col-lg-3 col-sm-5">
-                  <div class="experience box" style="margin-bottom:20px">
-                    <div class="item">
-                      <form method="">
-                        <div class="main">
-                          <h4>ZME 252</h4>
-                          <ul>
-                            <li>Marca: BMW</li>
-                            <li>Modelo: </li>
-                          </ul>
-                        </div>
-                        <button type="submit" class="btn-st mt-20">Eliminar</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-sm-5">
-                  <div class="experience box" style="margin-bottom:20px">
-                    <div class="item">
-                      <form method="">
-                        <div class="main">
-                          <h4>ZME 252</h4>
-                          <ul>
-                            <li>Marca: BMW</li>
-                            <li>Modelo: </li>
-                          </ul>
-                        </div>
-                        <button type="submit" class="btn-st mt-20">Eliminar</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-3 col-sm-5">
-                  <div class="experience box" style="margin-bottom:20px">
-                    <div class="item">
-                      <form method="">
-                        <div class="main">
-                          <h4>ZME 252</h4>
-                          <ul>
-                            <li>Marca: BMW</li>
-                            <li>Modelo: </li>
-                          </ul>
-                        </div>
-                        <button type="submit" class="btn-st mt-20">Eliminar</button>
-                      </form>
-                    </div>
-                  </div>
-                </div>
+                @endforeach
               </div>
             </section>
           </div>
@@ -267,30 +229,36 @@
                 <span></span>
               </div>
               <div class="contact-form col-lg-12 col-sm-12 mt-70">
-                <form method="post" class="box contact-valid">
+                <form method="post" class="box contact-valid" action="{{route('cliente.store')}}">
+                  @csrf
                   <h4>Crear reserva</h4>
                   <div class="row mt-40">
-                    <div class="col-lg-4 col-sm-12">
-                      <p class="text-center">Fecha a reservar</p>
-                      <input type="date" name="marca" id="marca" class="form-control" placeholder="Ingrese la marca">
-                    </div>
+                    <input type="hidden" name="id_cliente" id="id_cliente" value="{{auth()->user()->id}}">
+
                     <div class="col-lg-4 col-sm-12">
                       <p class="text-center">Placa</p>
-                      <select name="placa" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
-                        <option>ZME 252</option>
-                        <option>ZME 252</option>
-                        <option>ZME 252</option>                     
+                      <select name="id_vehiculo" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
+                        @foreach ($vehiculos as $vehiculo)
+                        <option value="{{ $vehiculo->id }}">{{$vehiculo->placa}}</option>
+                        @endforeach  
                       </select>
                     </div>
                     <div class="col-lg-4 col-sm-12">
-                      <p class="text-center">Tipo de mantenimiento</p>
-                      <select name="mantiento_id" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
-                        <option>Lavado</option>
-                        <option>Cambio de aceite</option>
-                        <option>Lavado</option>
-                        <option>Lavado</option>
+                      <p class="text-center">Fecha a reservar</p>
+                      <input type="date" name="fecha" id="fecha" class="form-control" placeholder="Ingrese la marca">
+                    </div>
+                    <div class="col-lg-4 col-sm-12">
+                      <p class="text-center mt-20">Tipo de mantenimiento</p>
+                      <select name="id_mantenimiento" class="form-control" style="background-color:#070708;color:white;border:1px solid #d94c48">
+                        @foreach ($mantenimientos as $mantenimiento)
+                          <option value="{{ $mantenimiento->id }}">{{$mantenimiento->tipo_de_mantenimiento}}</option>
+                        @endforeach
                       </select>
                     </div>
+                    <input type="hidden" name="id_estado" id="id_estado" value="1">
+                    <input type="hidden" name="id_recepcionista" id="id_recepcionista" value="n/n">
+
+
                     <div class="col-lg-12 col-sm-12 text-center mt-30">
                       <button type="submit" class="btn-st">Agregar</button>
                       <div id="loader">
@@ -316,24 +284,15 @@
                           </tr>
                         </thead>
                         <tbody>
+                          @foreach ($reservaciones as $reservacion)
                           <tr>
-                            <td>1</td>
-                            <td>enero</td>
-                            <td>3000</td>
-                            <td>3000</td>
+                            <td>{{$reservacion->id}}</td>
+                            <td>{{$reservacion->fecha}}</td>
+                            <td>{{$reservacion->placa}}</td>
+                            <td>{{$reservacion->tipo_de_mantenimiento}}</td>
+                            <td>{{$reservacion->estado}}</td>
                           </tr>
-                          <tr>
-                            <td>2</td>
-                            <td>enero</td>
-                            <td>3000</td>
-                            <td>3000</td>
-                          </tr>
-                          <tr>
-                            <td>3</td>
-                            <td>enero</td>
-                            <td>3000</td>
-                            <td>3000</td>
-                          </tr>
+                          @endforeach
                         </tbody>
                       </table>
                     </div>

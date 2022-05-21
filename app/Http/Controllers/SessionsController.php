@@ -21,7 +21,7 @@ class SessionsController extends Controller
 		}else{
 
 			if (auth()->user()->rol_id == '1') {
-				return redirect()->to('/admin');
+				return redirect()->to('/administrador');
 				} elseif (auth()->user()->rol_id == '2') {
 						return redirect()->to('/cliente');
 				} elseif (auth()->user()->rol_id == '3') {

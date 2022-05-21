@@ -8,21 +8,21 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
   <title>EXPRESSWORKSHOP - cliente</title>
-  <link rel="icon" href="img/logo.ico" />
+  <link rel="icon" href="/img/logo.ico" />
 
-  <link rel="stylesheet" href="css/plugins/bootstrap.min.css">
-  <link rel="stylesheet" href="css/plugins/font-awesome.css">
-  <link rel="stylesheet" href="css/plugins/magnific-popup.css">
-  <link rel="stylesheet" href="css/plugins/simplebar.css">
-  <link rel="stylesheet" href="css/plugins/owl.carousel.min.css">
-  <link rel="stylesheet" href="css/plugins/owl.theme.default.min.css">
-  <link rel="stylesheet" href="css/plugins/jquery.animatedheadline.css">
+  <link rel="stylesheet" href="/css/plugins/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/plugins/font-awesome.css">
+  <link rel="stylesheet" href="/css/plugins/magnific-popup.css">
+  <link rel="stylesheet" href="/css/plugins/simplebar.css">
+  <link rel="stylesheet" href="/css/plugins/owl.carousel.min.css">
+  <link rel="stylesheet" href="/css/plugins/owl.theme.default.min.css">
+  <link rel="stylesheet" href="/css/plugins/jquery.animatedheadline.css">
 
-  <link rel="stylesheet" class="back-color" href="css/style-dark.css">
-  <link rel="stylesheet" href="css/style-demo.css">
+  <link rel="stylesheet" class="back-color" href="/css/style-dark.css">
+  <link rel="stylesheet" href="/css/style-demo.css">
 
-  <link rel="stylesheet" class="posit-nav" href="css/settings/left-nav.css" />
-  <link rel="stylesheet" class="theme-color" href="css/settings/red-color.css" />
+  <link rel="stylesheet" class="posit-nav" href="/css/settings/left-nav.css" />
+  <link rel="stylesheet" class="theme-color" href="/css/settings/red-color.css" />
 
 </head>
 
@@ -47,7 +47,7 @@
 
     <nav class="header-main" data-simplebar>
       <div class="logo">
-        <a href="/cliente"><img src="img/logo.png" alt=""></a>
+        <a href="/cliente"><img src="/img/logo.png" alt=""></a>
       </div>
       <ul>
         <li data-tooltip="Perfil" data-position="top">
@@ -70,7 +70,7 @@
       </a>
     </nav>
 
-    <div class="pt-home" style="background-image: url('img/home-bg.png')">
+    <div class="pt-home" style="background-image: url('/img/home-bg.png')">
       <div class="editarPerfilCliente">
         <div class="header-page mt-70 mob-mt">
           <h2>Editar Mi Perfil</h2>
@@ -80,26 +80,28 @@
           <div class="col-lg-12 col-sm-12 mt-100">
           	<div class="info box">
           		<div class="row contact-form">
-                <form method="post" class="contact-valid" id="">
+                <form method="post" action="{{url('/client',$cliente->id)}}" class="contact-valid" id="">
+                  @csrf
+                  @method('PUT')
                   <div class="row mt-20">
                     <div class="col-lg-4 col-sm-12 ml-20">
                       <div class="photo">
-                        <img alt="" src="img/user-photo.jpg">
+                        <img alt="" src="/img/user-photo.jpg">
                       </div>
                     </div>
                     <div class="col-lg-4 col-sm-12">
                       <p style="color:#d94c48">Nombre y Apellido:</p>
-                      <h4 style="padding-bottom: 10px;">Sergio Prieto</h4>
+                      <h4 style="padding-bottom: 10px;">{{$cliente->name}} {{$cliente->apellido}}</h4>
                       <p style="color:#d94c48;margin:10px">Telefono:</p>
-                      <input type="text" name="telefono" id="telefono" class="form-control" placeholder="Telefono">
+                      <input type="text" name="telefono" id="telefono" class="form-control" value="{{$cliente->telefono}}" placeholder="Telefono">
                       <p style="color:#d94c48;margin-top:20px">Direccion:</p>
-                      <input type="text" name="direccion" id="direccion" class="form-control" placeholder="Direccion">
+                      <input type="text" name="direccion" id="direccion" class="form-control" value="{{$cliente->direccion}}" placeholder="Direccion">
                     </div>
                     <div class="col-lg-4 col-sm-12">
                       <p style="color:#d94c48">Usuario:</p>
-                      <p>Nombre y Apellido</p>
-                      {{-- <button type="submit" class="btn-st mt-20">Guardar</button> --}}
-                      <a href="/cliente#perfil" class="btn-st" style="margin-top:20px">Guardar</a>
+                      <p>{{$cliente->email}}</p>
+                      <button type="submit" class="btn-st">Guardar</button>
+                      <a href="/inventario#inventario" type="submit" class="btn-st" style="margin-left:60px">cancelar</a>
                       <div id="loader">
                         <i class="fas fa-sync"></i>
                       </div>
@@ -115,18 +117,18 @@
   </div>
 
   <!-- All Script -->
-  <script src="js/jquery.min.js"></script>
-  <script src="js/isotope.pkgd.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/simplebar.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/jquery.magnific-popup.min.js"></script>
-  <script src="js/jquery.animatedheadline.min.js"></script>
-  <script src="js/jquery.easypiechart.js"></script>
-  <script src="js/jquery.validation.js"></script>
-  <script src="js/tilt.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/main-demo.js"></script>
+  <script src="/js/jquery.min.js"></script>
+  <script src="/js/isotope.pkgd.min.js"></script>
+  <script src="/js/bootstrap.min.js"></script>
+  <script src="/js/simplebar.js"></script>
+  <script src="/js/owl.carousel.min.js"></script>
+  <script src="/js/jquery.magnific-popup.min.js"></script>
+  <script src="/js/jquery.animatedheadline.min.js"></script>
+  <script src="/js/jquery.easypiechart.js"></script>
+  <script src="/js/jquery.validation.js"></script>
+  <script src="/js/tilt.js"></script>
+  <script src="/js/main.js"></script>
+  <script src="/js/main-demo.js"></script>
   <script src="https://maps.google.com/maps/api/js?sensor=false"></script>
 
 </body>
